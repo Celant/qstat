@@ -21,6 +21,12 @@ jobs:
         run: make check
       - name: make distcheck
         run: make distcheck
+      - uses: actions/upload-artifact@v2
+        with:
+          name: qstat-linux
+          path: |
+            qstat
+            qstat.cfg
 
   build_windows:
     runs-on:    windows-latest
@@ -30,3 +36,10 @@ jobs:
       - name: nmake debug build
         run: |
           nmake -f Makefile.noauto windows_debug
+      - uses: actions/upload-artifact@v2
+        with:
+          name: qstat-windows
+          path: |
+            qstat.exe
+            qstat.pdb
+            qstat.cfg
